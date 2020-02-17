@@ -1,0 +1,25 @@
+{
+  "name": "F601",
+  "version": "1.0.0",
+  "description": "Accomplir mes taches financieres",
+  "author": "csabourin",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "bootstrap": "^4.1.3",
+    "bootstrap-vue": "^2.0.0",
+    "nuxt": "^2.0.0",
+    "nuxt-i18n": "^6.5.0"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1"
+  }
+}
