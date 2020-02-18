@@ -3,7 +3,7 @@
     <p>&nbsp;</p>
     <h1 class="megaTitle">{{$t('topTitle')}}</h1>
     <div>
-      <b-tabs v-model="mainTabs">
+      <b-tabs v-model="mainTabs" justified>
         <b-tab active><template v-slot:title>
           <img src="~/assets/PrepBudget.jpeg" width="175" height="175">
             <br>

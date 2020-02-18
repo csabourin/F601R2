@@ -4,7 +4,7 @@
     <bgimage :bgcolor="rgbcolor" />
     <b-container fluid style="overflow:hidden;" :class="['mainPage',sectionColor]">
       <div class="row navBar" :style="'background-color:'+rgbcolor">
-        <b-col cols="5" sm="3" class="text-left">
+        <b-col cols="6" sm="3" class="text-left">
           <hamburger @menu-toggle="ShowMenu" />
           <nuxt-link :to="localePath('index')">
             <homebutton v-bind:iconWidth="50" v-bind:iconTitle="$t('homePage')" />
@@ -15,7 +15,7 @@
           </nuxt-link>
           <button class="successIcon" v-b-modal.completionModal v-if="courseComplete"><img src="~/assets/successIcon.png" width="50" height="50"><strong class="completeCaption" v-html="$t('courseComplete')" /></button>
         </b-col>
-        <b-col cols="2" sm="6">
+        <b-col cols="1" sm="6">
         </b-col>
         <b-col cols="5" sm="3" class="text-right">
         <travelIcon />
