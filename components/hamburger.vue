@@ -1,56 +1,7 @@
 <template>
-    <a href="javascript:" :title="$t('navMenu')" @click="ShowMenu" @key.space.prevent="ShowMenu" :class="[{'is-active':MenuShowing},'ui-hamburger-02']">
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <span class="v-inv">{{$t('navMenu')}}</span>
-    </a>
+    <a href="javascript:" :title="$t('navMenu')" @click="ShowMenu" @key.space.prevent="ShowMenu" :class="[{'is-active':MenuShowing},'ui-hamburger-02']"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -15 70 70" width="50" height="50"><title>{{$t(navMenu)}}</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g id="Group_12410" data-name="Group 12410"><line id="Line_1" data-name="Line 1" x1="1.5" y1="1.5" x2="45.5" y2="1.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/><path id="Path_22642" data-name="Path 22642" d="M1.5,20.5h44" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/><line id="Line_3" data-name="Line 3" x1="1.5" y1="39.5" x2="45.5" y2="39.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/></g></g></g></svg><span class="v-inv">{{$t('navMenu')}}</span></a>
 </template>
-<style type="text/css" scoped>
-.ui-hamburger-02 {
-  top:.5em;
-  width: 50px;
-  height: 26px;
-  border: none;
-  position: relative;
-  background: linear-gradient(to bottom, #4D4D4D, #4D4D4D);
-  background-size: 100% 20%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  transition: background-size 0.2s 0.25s ease;
-  cursor: pointer;
-  text-decoration: none;
-}
-.ui-hamburger-02:before,
-.ui-hamburger-02:after {
-  height: 20%;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  background-color: #4D4D4D;
-  content: '';
-  transition: transform 0.3s ease;
-}
-.ui-hamburger-02:before {
-  top: 0;
-  transform-origin: 91% 150%;
-}
-.ui-hamburger-02:after {
-  bottom: 0;
-  transform-origin: 84% -50%;
-}
-.ui-hamburger-02.is-active {
-  background-size: 0 20%;
-  transition-delay: 0s;
-}
-.ui-hamburger-02.is-active:before {
-  transform: rotate(-45deg);
-  transition-delay: 0.15s;
-}
-.ui-hamburger-02.is-active:after {
-  transform: rotate(45deg);
-  transition-delay: 0.15s;
-}
-
-</style>
+<style type="text/css" scoped></style>
 <script type="text/javascript">
 export default {
   data(){

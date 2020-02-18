@@ -28,11 +28,15 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+  '@fortawesome/fontawesome-svg-core/styles.css'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+  '~/plugins/fontawesome.js',
+   { src: '~plugins/ga.js', mode: 'client' }
+   ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -48,6 +52,10 @@ export default {
       strategy: 'prefix',
       defaultLocale: 'en'
     }]],
+      layoutTransition: {
+    name: "layout",
+    mode: "out-in"
+  },
     i18n: {
       strategy: 'prefix',
       useCookie: true,

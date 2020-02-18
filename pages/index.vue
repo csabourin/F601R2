@@ -83,28 +83,6 @@
       </b-card>
     </div>
     <p>&nbsp;</p>
-    <b-alert show="true">
-      <div v-if="$i18n.locale=='en'">
-        <p>Thank you for following this new course “Responsible Use of Public Funds.” As this is a work in progress, we are seeking your feedback on the learning experience. We appreciate you taking a few minutes to tell us what worked well, any issues you faced and what we can fix to make it better. It will take you 5-10 minutes to complete the questionnaire.</p>
-        <p><a href="https://csps-efpc.sondage-survey.ca/f/s.aspx?s=f594eb12-9bd2-4cde-bed9-5d3220a7113b&lang=EN" target="_blank">Questionnaire</a></p>
-      </div>
-      <div v-if="$i18n.locale=='fr'">
-        <p>Merci de suivre le nouveau produit d&rsquo;apprentissage intitulé « La saine gestion des fonds publics ». Comme celui-ci est dans une phase test, nous aimerions obtenir vos commentaires sur votre expérience d&rsquo;apprentissage, particulièrement en ce qui a trait à ce qui a bien été, les défis que vous avez rencontrés et vos suggestions pour améliorer l&rsquo;expérience. Remplir le questionnaire devrait vous prendre entre 5 et 10 minutes.</p>
-        <p><a href="https://csps-efpc.sondage-survey.ca/f/s.aspx?s=f594eb12-9bd2-4cde-bed9-5d3220a7113b&lang=FR" target="_blank">Questionnaire</a></p>
-      </div>
-    </b-alert>
-    <p>&nbsp;</p>
-    <h2 class="sideTitle planTitle">{{$t('plan')}}</h2>
-    <section role="navigation" class="courseSection planSection">
-      
-    </section>
-    <hr class="planHr">
-    <h2 class="sideTitle spendTitle">{{$t('spend')}}</h2>
-    <section role="navigation" class="courseSection spendSection" ></section>
-    <hr class="spendHr">
-    <h2 class="sideTitle reportTitle">{{$t('report')}}</h2>
-    <section role="navigation" class="courseSection reportSection"></section>
-    <hr class="reportHr">
   </div>
 </template>
 <script type="text/javascript">

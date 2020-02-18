@@ -8,16 +8,20 @@
           <hamburger @menu-toggle="ShowMenu" />
           <nuxt-link :to="localePath('index')">
             <homebutton v-bind:iconWidth="50" v-bind:iconTitle="$t('homePage')" />
+          </nuxt-link> 
+           <fileMenu />
+           <nuxt-link v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
+            <langswitch v-bind:iconWidth="60" v-bind:displayLang="locale.code" :lang="locale.code" v-bind:iconTitle="locale.name" />
           </nuxt-link>
           <button class="successIcon" v-b-modal.completionModal v-if="courseComplete"><img src="~/assets/successIcon.png" width="50" height="50"><strong class="completeCaption" v-html="$t('courseComplete')" /></button>
         </b-col>
         <b-col cols="2" sm="6">
         </b-col>
         <b-col cols="5" sm="3" class="text-right">
-          <fileMenu />
-          <nuxt-link v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
-            <langswitch v-bind:iconWidth="60" v-bind:displayLang="locale.code" :lang="locale.code" v-bind:iconTitle="locale.name" />
-          </nuxt-link>
+        <travelIcon />
+        <hostingIcon />
+        <conferenceIcon />
+          
         </b-col>
       </div>
       <b-row>
@@ -45,6 +49,9 @@ import langswitch from "~/components/icons/language_icon"
 import hamburger from "~/components/hamburger"
 import contentMap from "~/components/contentMap"
 import homebutton from "~/components/icons/home_icon"
+import travelIcon from "~/components/icons/travel"
+import conferenceIcon from "~/components/icons/conference"
+import hostingIcon from "~/components/icons/hosting"
 import fileMenu from "~/components/fileMenu"
 export default {
   name: "mainPage",
@@ -70,6 +77,9 @@ export default {
     langswitch,
     homebutton,
     hamburger,
+    travelIcon,
+    hostingIcon,
+    conferenceIcon,
     fileMenu,
     contentMap,
     bgimage

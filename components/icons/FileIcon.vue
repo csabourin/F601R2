@@ -1,16 +1,10 @@
 <template>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.5 41.75" :width="iconWidth" :height="iconWidth">
-    <title>{{ title }}</title>
-  <g >
-      <rect class="cls-1" x="1.1" y="8.05" width="52" height="33" />
-      <rect class="cls-2" x="1" y="7.75" width="52.5" height="33" />
-      <path class="cls-2" d="M17.5,5.5V3.13A2.14,2.14,0,0,1,19.63,1H34.87A2.14,2.14,0,0,1,37,3.13V5.5" />
-      <path class="cls-2" d="M35.92,20.5H47A9.47,9.47,0,0,0,53.43,18" />
-      <path class="cls-2" d="M1.08,17.73h0A9.49,9.49,0,0,0,7.77,20.5H18.35" />
-      <polygon class="cls-3" points="21.25 16 21.25 19.85 24.3 24.25 30.59 24.25 33.25 19.85 33.25 16 21.25 16" />
-      <line class="cls-2" x1="25" y1="19.75" x2="29.5" y2="19.75" />
-  </g>
-</svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -15 70 70" :width="iconWidth" :height="iconWidth">
+    <title>{{title}}</title>
+    <path id="Path_22636" data-name="Path 22636" d="M6.83,1.5A5.33,5.33,0,0,0,1.5,6.83h0V44.17A5.33,5.33,0,0,0,6.83,49.5h48a5.32,5.32,0,0,0,5.34-5.32h0v-32a5.33,5.33,0,0,0-5.33-5.33H28.16L22.83,1.5Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+    <line id="Line_112" data-name="Line 112" x1="22.19" y1="28.19" x2="39.19" y2="28.19" stroke-width="3" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <line id="Line_113" data-name="Line 113" x1="31.33" y1="19.4" x2="31.33" y2="36.4" stroke-width="3" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </svg>
 </template>
 <script type="text/javascript">
 export default {
@@ -23,25 +17,25 @@ export default {
 }
 
 </script>
- <style scoped>
-    .cls-1 {
-      fill: #e0e0e0;
-    }
+<style scoped>
+.cls-1 {
+  fill: #e0e0e0;
+}
 
-    .cls-2 {
-      fill: none;
-    }
+.cls-2 {
+  fill: none;
+}
 
-    .cls-2,
-    .cls-3 {
-      stroke: #666;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 2px;
-    }
+.cls-2,
+.cls-3 {
+  stroke: #666;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
 
-    .cls-3 {
-      fill: #fff;
-    }
+.cls-3 {
+  fill: #fff;
+}
 
-    </style>
+</style>
