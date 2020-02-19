@@ -48,6 +48,7 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
+    'vue-scrollto/nuxt',
     ['nuxt-i18n', {
       strategy: 'prefix',
       defaultLocale: 'en'
