@@ -3,11 +3,30 @@
     <p>&nbsp;</p>
     <h1 class="megaTitle">{{$t('topTitle')}}</h1>
     <div>
+         <a href="#" v-scroll-to="{
+     el: '#prepBudget',
+     container: 'body',
+     duration: 1000,
+     easing: 'ease-in-out',
+     offset: -200,
+     force: true,
+     cancelable: true,
+     onStart: onStart,
+     onDone: onDone,
+     onCancel: onCancel,
+     x: false,
+     y: true
+ }">
+     <img src="~/assets/PrepBudget.jpeg" width="175" height="175"><br>
+            Préparer un budget
+</a>
+            <img src="~/assets/Acheter.jpeg" width="175" height="175">
+            <img src="~/assets/PayerFacture.jpeg" width="175" height="175">
+            <img src="~/assets/SuivreBudget.jpeg" width="175" height="175">
+    <!-- 
       <b-tabs v-model="mainTabs" justified>
         <b-tab active><template v-slot:title>
-          <img src="~/assets/PrepBudget.jpeg" width="175" height="175">
-            <br>
-            Préparer un budget
+            
           </template>
           <p class="subModule">
             <microlearning path="planKey" time="2" imagePath="KeyMessP.svg" :text="$t('KeyMessages')" :completion="$store.state.currentPlaying.kmPlan" />
@@ -17,7 +36,6 @@
           </p>
         </b-tab>
         <b-tab><template v-slot:title>
-            <img src="~/assets/Acheter.jpeg" width="175" height="175">
             <br>
             Acheter un bien ou un service
           </template>
@@ -31,7 +49,6 @@
           </p>
         </b-tab>
         <b-tab><template v-slot:title>
-            <img src="~/assets/PayerFacture.jpeg" width="175" height="175">
             <br>
             Payer une facture
           </template>
@@ -42,7 +59,6 @@
           </p>
         </b-tab>
         <b-tab><template v-slot:title>
-            <img src="~/assets/SuivreBudget.jpeg" width="175" height="175">
             <br>
             Suivre un budget
           </template>
@@ -68,7 +84,7 @@
     </p>
         </b-tab>
       </b-tabs>
-    </div>
+     --></div>
     <videoplayer enVideoFile="https://video.csps-efpc.gc.ca/p/101/serveFlavor/entryId/0_a9sopjk0/flavorId/0_xwd6dtx5/name/a.mp4" frVideoFile="https://video.csps-efpc.gc.ca/p/101/serveFlavor/entryId/0_0olxxf6u/flavorId/0_ynuanlxw/name/a.mp4" posterFile="video_poster.PNG" ccFile="intro_captions.vtt" toResume="setHomepage" :restartAt="thatPoint" />
     <div role="tablist" class="transcriptionBox">
       <b-card no-body class="mb-1 text-left">
@@ -82,6 +98,12 @@
         </b-collapse>
       </b-card>
     </div>
+    <transition name="gradshow">
+    <div :class="{'prepBudget':isPrepped}" v-if="prepBudgetShow">
+            <p>Scroll here</p>
+    </div>
+  </transition>
+    <span id="prepBudget"></span>
     <p>&nbsp;</p>
   </div>
 </template>
@@ -97,10 +119,16 @@ export default {
   },
   data() {
     return {
+      prepBudgetShow:false,
       
       
       
       mainTabs: 0
+    }
+  },
+  methods:{
+    onStart(){
+      this.prepBudgetShow=true;
     }
   },
   components: {
@@ -136,6 +164,21 @@ export default {
 
 </script>
 <style scoped>
+
+.gradshow-enter-active, .gradshow-leave-active {
+  transition: opacity 2s;
+}
+.gradshow-enter, .gradshow-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.prepBudget{
+  height: 100vh;
+  width:100%;
+  position: relative;
+  display: block;
+  background-color: rgb(89, 22, 57);
+}
 >>>.nav-tabs {
   border-bottom: 0px solid transparent;
 }
