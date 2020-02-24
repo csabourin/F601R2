@@ -19,7 +19,7 @@ export default {
     ]
   },
     router: {
-    mode:"history"
+    mode:"hash"
   },
   /*
    ** Customize the progress-bar color
