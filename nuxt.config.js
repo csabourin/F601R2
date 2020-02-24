@@ -19,7 +19,7 @@ export default {
     ]
   },
     router: {
-    mode:"hash"
+    mode:"history"
   },
   /*
    ** Customize the progress-bar color
@@ -35,6 +35,7 @@ export default {
    */
   plugins: [
   '~/plugins/fontawesome.js',
+  '~/plugins/scrollActive.js',
    { src: '~plugins/ga.js', mode: 'client' }
    ],
   /*

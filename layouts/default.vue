@@ -128,7 +128,7 @@ export default {
 
     },
     tabIndex(newValue) {
-      gsap.to(this.$data, 1, { rgbcolor: this.colorSets[newValue], ease: Back.easeInOut.config(1.7) });
+      gsap.to(this.$data, 1, { rgbcolor: this.colorSets[newValue], ease: Back.easeInOut.config(0.05) });
       // this.rgbcolor= this.colorSets[newValue]
     }
   }
@@ -174,6 +174,9 @@ body {
 }
 
 .megaTitle {
+  width:100%;
+  position: relative;
+  text-align: center;
   font-family: 'Open Sans Condensed',sans-serif;
   font-size: 4em;
   color: #ffffffee;
