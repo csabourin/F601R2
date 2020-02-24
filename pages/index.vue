@@ -1,305 +1,138 @@
 <template>
-  <div class="mainWindow">
-    <p>&nbsp;</p>
-    <h1 class="megaTitle">{{$t('topTitle')}}</h1>
-    <div>
-         <a href="#" v-scroll-to="{
-     el: '#prepBudget',
-     container: 'body',
-     duration: 1000,
-     easing: 'ease-in-out',
-     offset: -200,
-     force: true,
-     cancelable: true,
-     onStart: onStart,
-     onDone: onDone,
-     onCancel: onCancel,
-     x: false,
-     y: true
- }">
-     <img src="~/assets/PrepBudget.jpeg" width="175" height="175"><br>
-            Préparer un budget
-</a>
-            <img src="~/assets/Acheter.jpeg" width="175" height="175">
-            <img src="~/assets/PayerFacture.jpeg" width="175" height="175">
-            <img src="~/assets/SuivreBudget.jpeg" width="175" height="175">
-    <!-- 
-      <b-tabs v-model="mainTabs" justified>
-        <b-tab active><template v-slot:title>
-            
-          </template>
-          <p class="subModule">
-            <microlearning path="planKey" time="2" imagePath="KeyMessP.svg" :text="$t('KeyMessages')" :completion="$store.state.currentPlaying.kmPlan" />
+  <div id="scrollTester">
+
+<h1 class="megaTitle">Accomplir mes tâches financières</h1>
+<scrollactive class="my-nav" :modifyUrl="false">
+    <ul ref="choices" :class="[{'isFixed':isScrolled},'nav','nav-tabs','nav-justified','mainIcons']">
+      <!---->
+      <li class="nav-item topImgs">
+        <a  class="nav-link scrollactive-item active" @click="setColor($event,0)" href="#one" ><img src="~/assets/PrepBudget.jpeg"> <br>
+          Préparer un budget
+          <hr :style="'color:'+$parent.$parent.colorSets[0]">
+        </a></li>
+      <li class="nav-item topImgs" style="border:0px red">
+        <a  href="#two" @click="setColor($event,1)" class="nav-link active scrollactive-item" >
+     <img src="~/assets/Acheter.jpeg" > <br>
+          Acheter un bien ou un service
+          <hr :style="'color:'+$parent.$parent.colorSets[1]">
+        </a></li>
+      <li class="nav-item topImgs"><a href="#three" class="scrollactive-item nav-link active"><img src="~/assets/PayerFacture.jpeg" > <br>
+          Payer une facture
+          <hr :style="'color:'+$parent.$parent.colorSets[2]">
+        </a></li>
+      <li class="nav-item topImgs"><a href="#four" class="scrollactive-item nav-link active"><img src="~/assets/SuivreBudget.jpeg" > <br>
+          Suivre un budget
+          <hr :style="'color:'+$parent.$parent.colorSets[3]">
+        </a></li>
+      <li class="nav-item topImgs"><a href="#five" class="scrollactive-item nav-link active"><img src="~/assets/FermerAnnee.jpeg"> <br>
+          Fermer une année financière
+          <hr :style="'color:'+$parent.$parent.colorSets[4]">
+        </a></li>
+      <!---->
+    </ul>
+  </scrollactive>
+    <div class="emptyscreen"></div>
+    <div ref="two[0]" id="one" class="showonscreen" :style="'background-color:'+$parent.$parent.colorSets[0]">
+         <microlearning path="planKey" time="2" imagePath="KeyMessP.svg" :text="$t('KeyMessages')" :completion="$store.state.currentPlaying.kmPlan" />
       <microlearning path="buildWP" time="20" imagePath="BuildWP.svg" :text="$t('BuildWorkPlan')" :completion="$store.state.currentPlaying.buildWP_player" />
       <microlearning time="20" path="createBudget" imagePath="CreateBud.svg" :text="$t('CreateBudget')" :completion="$store.state.currentPlaying.createBudget_player" />
-      <microlearning time="15" path="exam1" imagePath="P-Test.svg" :text="$t('Test')" :completion="parseInt(planCompleted)" />
-          </p>
-        </b-tab>
-        <b-tab><template v-slot:title>
-            <br>
-            Acheter un bien ou un service
-          </template>
-          <p class="subModule">
-
-      <microlearning imagePath="KeyMessR.png" path="reportKey" time="5" :text="$t('KeyMessages')" :completion="$store.state.currentPlaying.kmReport" />
-      <microlearning imagePath="R-Conduct.svg" path="reportPart1" time="20" :text="$t('ConductPeriodicVarianceReporting')" :completion="$store.state.currentPlaying.reportPart1_player" />
-      <microlearning imagePath="R-Contribute.svg" path="reportPart2" time="20" :text="$t('ContributeReporting')" :completion="$store.state.currentPlaying.reportPart2_player" />
-      <microlearning imagePath="R-Test.svg" path="exam3" time="15" :text="$t('Test')" :completion="parseInt(reportCompleted)" />
-    
-          </p>
-        </b-tab>
-        <b-tab><template v-slot:title>
-            <br>
-            Payer une facture
-          </template>
-          <p class="subModule">
-            <img src="https://picsum.photos/seed/8/150/">
-            <img src="https://picsum.photos/seed/9/150/">
-            <img src="https://picsum.photos/seed/10/150/">
-          </p>
-        </b-tab>
-        <b-tab><template v-slot:title>
-            <br>
-            Suivre un budget
-          </template>
-          <p class="subModule">
-      <microlearning path="spendKey" time="5" imagePath="KeyMessS.png" :text="$t('KeyMessages')" :completion="$store.state.currentPlaying.kmSpend" />
-      <microlearning imagePath="InitiateAuthSpending.svg" path="spendPart1" time="20" :text="$t('InitiateAuthorizeSpending')" :completion="$store.state.currentPlaying.spendPart1_player" />
-      <microlearning imagePath="ExerciseFinancialAuthority.svg" path="spendPart2" time="20" :text="$t('ExerciseFinancialAuthority')" :completion="$store.state.currentPlaying.spendPart2_player" />
-      <microlearning time="20" path="spendPart3" imagePath="MonitContFinances.svg" :text="$t('MonitorControlFinances')" :completion="$store.state.currentPlaying.spendPart3_player" />
-      <microlearning time="15" path="exam2" imagePath="S-Test.svg" :text="$t('Test')" :completion="parseInt(spendCompleted)" />
-    </p>
-        </b-tab>
-        <b-tab><template v-slot:title>
-            <img src="~/assets/FermerAnnee.jpeg" width="175" height="175">
-            <br>
-            Fermer une année financière
-          </template>
-          <p class="subModule">
-      <microlearning path="spendKey" time="5" imagePath="KeyMessS.png" :text="$t('KeyMessages')" :completion="$store.state.currentPlaying.kmSpend" />
-      <microlearning imagePath="InitiateAuthSpending.svg" path="spendPart1" time="20" :text="$t('InitiateAuthorizeSpending')" :completion="$store.state.currentPlaying.spendPart1_player" />
-      <microlearning imagePath="ExerciseFinancialAuthority.svg" path="spendPart2" time="20" :text="$t('ExerciseFinancialAuthority')" :completion="$store.state.currentPlaying.spendPart2_player" />
-      <microlearning time="20" path="spendPart3" imagePath="MonitContFinances.svg" :text="$t('MonitorControlFinances')" :completion="$store.state.currentPlaying.spendPart3_player" />
-      <microlearning time="15" path="exam2" imagePath="S-Test.svg" :text="$t('Test')" :completion="parseInt(spendCompleted)" />
-    </p>
-        </b-tab>
-      </b-tabs>
-     --></div>
-    <videoplayer enVideoFile="https://video.csps-efpc.gc.ca/p/101/serveFlavor/entryId/0_a9sopjk0/flavorId/0_xwd6dtx5/name/a.mp4" frVideoFile="https://video.csps-efpc.gc.ca/p/101/serveFlavor/entryId/0_0olxxf6u/flavorId/0_ynuanlxw/name/a.mp4" posterFile="video_poster.PNG" ccFile="intro_captions.vtt" toResume="setHomepage" :restartAt="thatPoint" />
-    <div role="tablist" class="transcriptionBox">
-      <b-card no-body class="mb-1 text-left">
-        <b-card-header header-tag="p" class="p-1" role="tab">
-          <b-button block href="#" v-b-toggle.translationbox variant="light" class="text-left">{{$t('transcript')}}</b-button>
-        </b-card-header>
-        <b-collapse id="translationbox" accordion="translation-box" role="tabpanel">
-          <b-card-body>
-            <b-card-text><span v-html="$t('transcriptText')"></span></b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+      <microlearning time="15" path="exam1" imagePath="P-Test.svg" :text="$t('Test')" :completion="100" />
     </div>
-    <transition name="gradshow">
-    <div :class="{'prepBudget':isPrepped}" v-if="prepBudgetShow">
-            <p>Scroll here</p>
-    </div>
-  </transition>
-    <span id="prepBudget"></span>
-    <p>&nbsp;</p>
+    <div ref="two[1]" id="two" class="showonscreen" :style="'background-color:'+$parent.$parent.colorSets[1]"></div>
+    <div ref="two[2]" id="three" class="showonscreen" :style="'background-color:'+$parent.$parent.colorSets[2]"></div>
+    <div ref="two[3]" id="four" class="showonscreen" :style="'background-color:'+$parent.$parent.colorSets[3]"></div>
+    <div ref="two[4]" id="five" class="showonscreen" :style="'background-color:'+$parent.$parent.colorSets[4]"></div>
   </div>
 </template>
+<style type="text/css" scoped>
+
+.nav{display:flex;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none;}
+.nav-link{display:block;padding:0.5rem 1rem;}
+.nav-link:hover,.nav-link:focus{text-decoration:none;}
+.nav-tabs{border-bottom:1px solid #dee2e6;}
+.nav-tabs .nav-item{margin-bottom:-1px;}
+.nav-tabs .nav-link{ border:1px solid transparent;border-top-left-radius:0.25rem;border-top-right-radius:0.25rem;}
+.nav-tabs .nav-link p{width:156px;}
+.nav-tabs .nav-link:hover,.nav-tabs .nav-link:focus{border-color:#e9ecef #e9ecef #dee2e6;}
+.nav-tabs .nav-link.active{color:#495057;background-color:#fff;border-color:#dee2e6 #dee2e6 #fff;}
+.nav-justified .nav-item{flex-basis:0;flex-grow:1;text-align:center;}
+.topImgs img{width:175px;height:175px; transition: all 1s}
+.topImgs img{width:175px;height:175px; transition: all 1s}
+.emptyscreen {
+  display: block;
+  position: relative;
+  height: 40vh;
+}
+
+.isFixed .topImgs img{width:75px;height:75px;}
+.isFixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.showonscreen {
+  display: flex;
+  align-items:center;
+  position: relative;
+  height: 100vh;
+  width: calc(100vw-(100vw-100%));
+  transition: all 1s;
+}
+.showNow{width: 100vw;}
+
+.is-active hr:after{
+  position:relative;
+  display: block;
+  content: "";
+  width:100%;
+  border-bottom:3px solid currentColor;
+}
+
+</style>
 <script type="text/javascript">
-import commonMessage_en from "~/lang/en.js"
-import commonMessage_fr from "~/lang/fr.js"
-import microlearning from "~/components/microlearning"
-import hamburger from "~/components/hamburger"
-import videoplayer from "~/components/interface/videoPlayer"
+
+  import microlearning from "~/components/microlearning"
 export default {
-  i18n: {
-    sharedMessages: commonMessage_en,
+  name:"scrollTest",
+  components:{
+    microlearning
   },
   data() {
     return {
-      prepBudgetShow:false,
-      
-      
-      
-      mainTabs: 0
+      isScrolled: false,
+      activeBlock: null,
+      idBlocks:['one','two','three','four','five']
     }
   },
-  methods:{
-    onStart(){
-      this.prepBudgetShow=true;
-    }
+  methods: {
+     onItemChanged(event, currentItem, lastActiveItem) {
+    console.log(currentItem, lastActiveItem)
   },
-  components: {
-    microlearning,
-    hamburger,
-    videoplayer
-  },
-  computed: {
-    thatPoint() {
-      return parseInt(this.$store.state.currentPlaying.homepage)
+    setColor(e,color) {
+      console.log(e)
+      e.target.classList.add('onfocus')
+      this.$store.commit('default/setTab', color)
     },
-    planCompleted() {
-      return this.$store.getters['plan/getScore']
-    },
-    reportCompleted() {
-      return this.$store.getters['report/getScore']
-    },
-    spendCompleted() {
-      return this.$store.getters['spend/getScore']
-    },
-    courseComplete() {
-      if (this.planCompleted >= 80 && this.spendCompleted >= 80 && this.reportCompleted >= 80) {
-        return true
+    topScroll(event) {
+      let scrollHeight=this.$refs.choices.getBoundingClientRect().bottom
+      if (document.body.scrollTop > scrollHeight || document.documentElement.scrollTop > scrollHeight) {
+        this.isScrolled = true
+      } else {
+        this.isScrolled = false
       }
     }
   },
-  watch: {
-    mainTabs(newValue) {
-      this.$store.commit('default/setTab', newValue)
-    }
+  created() {
+    window.addEventListener('scroll', this.topScroll);
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.topScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 }
 
 </script>
-<style scoped>
-
-.gradshow-enter-active, .gradshow-leave-active {
-  transition: opacity 2s;
-}
-.gradshow-enter, .gradshow-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-
-.prepBudget{
-  height: 100vh;
-  width:100%;
-  position: relative;
-  display: block;
-  background-color: rgb(89, 22, 57);
-}
->>>.nav-tabs {
-  border-bottom: 0px solid transparent;
-}
-
->>>.nav-link {
-  color: #fff;
-}
-
->>>.nav-link.active {
-  background-color: transparent;
-  border: transparent;
-  color: #fff;
-  font-weight: bold;
-}
-
->>>.nav-link:not(.active) {
-  /*border-bottom: 1px solid #fff;*/
-}
-
->>>.tab-pane.active {
-  border: 1px solid #fff;
-  border-top: none;
-  border-radius: 0 0 5px 5px;
-}
-
-.subModule{ display: flex }
-.pageTitle {
-  font-size: 50px;
-  margin-top: 1em;
-}
-
-.planHr {
-  border-top: 3px dashed #d1dfe1;
-}
-
-.spendHr {
-  border-top: 3px dashed #cac1ca;
-  ;
-}
-
-.reportHr {
-  border-top: 3px dashed #d6c5c1;
-}
-
-.sideTitle {
-  font-size: 35px;
-  font-family: 'Roboto Medium', sans-serif;
-  font-weight: 800;
-  clear: both;
-  text-transform: uppercase;
-  text-align: left;
-  margin-bottom: -1em;
-  margin-left: 50px;
-}
-
-.mainWindow {
-  text-align: center;
-}
-
-#introVideo {
-  width: 60vw;
-}
-
-.videoContain {
-  width: 60vw;
-  margin: auto;
-}
-
-.courseSection {
-  clear: left;
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  background-position-y: 9em;
-  background-position-x: 12em;
-  background-repeat: no-repeat;
-}
-
-.planTitle {
-  color: #587C84;
-}
-
-.spendTitle {
-  color: #7d677d;
-}
-
-.reportTitle {
-  color: #865F56;
-}
-
-
-.iconText {
-  color: #fff;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.sideText:before {
-  content: "“";
-  color: #fff;
-  float: left;
-  font-size: 60px;
-}
-
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-
-details {
-  text-align: left
-}
-
-</style>
